@@ -174,16 +174,17 @@ var canvas = document.getElementById("gameScreen");
 var context = canvas.getContext("2d");
 var GAME_WIDTH = 800;
 var GAME_HEIGHT = 600;
-var knob = new _knob.default(GAME_WIDTH, GAME_HEIGHT, 'left');
-knob.draw(context);
+var lknob = new _knob.default(GAME_WIDTH, GAME_HEIGHT, 'left');
+var rknob = new _knob.default(GAME_WIDTH, GAME_HEIGHT, 'right');
+lknob.draw(context);
 var lastTime = 0;
 
 function gameLoop(timeStamp) {
   var deltaTime = timeStamp - lastTime;
   lastTime = timeStamp;
   context.clearRect(0, 0, 800, 600);
-  knob.update(deltaTime);
-  knob.draw(context);
+  lknob.update(deltaTime);
+  lknob.draw(context);
   requestAnimationFrame(gameLoop);
 }
 
@@ -216,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64584" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64690" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
