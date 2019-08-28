@@ -2,14 +2,25 @@ export default class Knob {
 
     constructor(game, position) {
         this.gameWidth = game.gameWidth;
-        this.width = 150;
-        this.height = 30;
+        this.gameHeight = game.gameHeight;
+        this.radius = 40;
+        this.width = 2 * this.radius;
+        this.height = 2 * this.radius;
+        this.angle = 0;
+        this.maxRotate = 5;
         this.maxSpeed = 10;
         this.speed = 0;
-        this.position = {
-            x: game.gameWidth / 2 - this.width /2,
-            y: game.gameHeight - this.height - 10
-        };
+        if (position === 'left') {
+            this.position = { 
+                x: this.width, 
+                y: this.gameHeight - this.height
+            };
+        } else {
+            this.position = {
+                x: this.gameWidth - this.width, 
+                y: this.gameHeight - this.height
+            };
+        }
     }
 
     rotateLeft() {
@@ -26,7 +37,9 @@ export default class Knob {
 
     draw(context) {
         context.fillStyle = '#0ff';
-        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        context.beginPath();
+        context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
+        context.fill();
     }
 
     update(deltaTime) {

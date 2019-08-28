@@ -19,7 +19,6 @@ export default class Ball {
     draw(context) {
         context.drawImage(this.image, this.position.x, this.position.y, this.size, this.size);
 
-
     }
 
     update(deltaTime) {
