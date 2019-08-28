@@ -1,12 +1,27 @@
 export default class Knob {
 
-    constructor(gameWidth, gameHeight, position) {
+    constructor(game, position) {
+        this.gameWidth = game.gameWidth;
         this.width = 150;
         this.height = 30;
+        this.maxSpeed = 10;
+        this.speed = 0;
         this.position = {
-            x: gameWidth / 2 - this.width /2,
-            y: gameHeight - this.height - 10
+            x: game.gameWidth / 2 - this.width /2,
+            y: game.gameHeight - this.height - 10
         };
+    }
+
+    rotateLeft() {
+        this.speed = -this.maxSpeed;
+    }
+
+    rotateRight() {
+        this.speed = this.maxSpeed;
+    }
+
+    stop() {
+        this.speed = 0;
     }
 
     draw(context) {
@@ -17,6 +32,11 @@ export default class Knob {
     update(deltaTime) {
         if (!deltaTime) return;
 
-        this.position.x += 5 / deltaTime;
+        this.position.x += this.speed;
+
+        if (this.position.x < 0) this.position.x = 0;
+        if (this.position.x + this.width > this.gameWidth) this.position.x = this.gameWidth - this.width;
     }
+
+
 }
