@@ -1,55 +1,48 @@
+import {parseRadians} from './utils/utils';
+
 export default class Knob {
 
     constructor(game, position) {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
-        this.radius = 40;
-        this.width = 2 * this.radius;
-        this.height = 2 * this.radius;
-        this.angle = 0;
-        this.maxRotate = 5;
-        this.maxSpeed = 10;
-        this.speed = 0;
+        this.image = document.getElementById('img_knob');
+        this.size = 80;
+        this.angle = parseRadians(0);
+        this.deltaAngle = parseRadians(5);
+        this.direction = parseRadians(0);
         if (position === 'left') {
             this.position = { 
-                x: this.width, 
-                y: this.gameHeight - this.height
+                x: this.size * 1/2, 
+                y: this.gameHeight - this.size * 3/2
             };
         } else {
             this.position = {
-                x: this.gameWidth - this.width, 
-                y: this.gameHeight - this.height
+                x: this.gameWidth - this.size * 3/2, 
+                y: this.gameHeight - this.size * 3/2
             };
         }
     }
 
     rotateLeft() {
-        this.speed = -this.maxSpeed;
+        this.angle = -this.deltaAngle;
     }
 
     rotateRight() {
-        this.speed = this.maxSpeed;
+        this.angle = this.deltaAngle;
     }
 
     stop() {
-        this.speed = 0;
+        this.angle = 0;
     }
 
     draw(context) {
-        context.fillStyle = '#0ff';
-        context.beginPath();
-        context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
-        context.fill();
+        // this.image.rotate(this.direction);
+        context.drawImage(this.image, this.position.x, this.position.y, this.size, this.size);
     }
 
     update(deltaTime) {
-        if (!deltaTime) return;
-
-        this.position.x += this.speed;
-
-        if (this.position.x < 0) this.position.x = 0;
-        if (this.position.x + this.width > this.gameWidth) this.position.x = this.gameWidth - this.width;
+        this.direction += this.angle;
     }
 
-
+    
 }

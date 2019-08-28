@@ -1,0 +1,10 @@
+#gameScreen {
+    border: 1px solid black;
+    border-radius: 25px;
+    background: red;
+    box-shadow: 2px 2px 12px 0px grey;
+}
+
+img {
+    display: none;
+}

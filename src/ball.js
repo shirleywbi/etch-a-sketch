@@ -10,8 +10,8 @@ export default class Ball {
             y: 50
         }
         this.speed = {
-            x: 4,
-            y: 2
+            x: 2,
+            y: 1
         };
         this.size = 50;
     }
