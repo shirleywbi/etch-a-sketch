@@ -10,7 +10,7 @@ export default class Ball {
             y: 50
         }
         this.speed = {
-            x: 2,
+            x: 3,
             y: 1
         };
         this.size = 50;
@@ -24,14 +24,16 @@ export default class Ball {
     update(deltaTime) {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
+        
+        let screen = this.game.screen;
 
         // wall on left or right
-        if (this.position.x + this.size > this.gameWidth || this.position.x < 0) {
+        if (this.position.x < screen.position.x || this.position.x + this.size > screen.position.x + screen.width) {
             this.speed.x = -this.speed.x;
         }
 
         // wall on top or bottom
-        if (this.position.y - this.size > this.gameHeight || this.position.y < 0) {
+        if (this.position.y < screen.position.y || this.position.y + this.size > screen.position.y + screen.height) {
             this.speed.y = -this.speed.y;
         }
 
