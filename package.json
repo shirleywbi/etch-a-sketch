@@ -4,7 +4,7 @@
   "description": "Etch a Sketch",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "./node_modules/.bin/parcel index.html --open",
     "build": "parcel build index.html",
     "heroku-postbuild": "parcel build index.html"
   },
