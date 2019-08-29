@@ -42,6 +42,12 @@ export default class Game {
         this.gameObjects.forEach((object) => object.update(deltaTime));
     }
 
+    resetScreen(context) {
+        context.clearRect(this.screen.position.x, this.screen.position.y, this.screen.width, this.screen.height);
+        this.line.clear();
+        this.screen.draw(context);
+    }
+
     drawStatic(context) {
         this.staticObjects.forEach((object) => object.draw(context));
     }

@@ -30,7 +30,6 @@ export default class InputHandler {
             }
         });
 
-        // TODO: Does not take into consideration if you still have that particular key down
         document.addEventListener("keyup", event => {
             switch(event.key) {
                 case 'z':

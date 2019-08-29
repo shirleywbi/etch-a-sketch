@@ -7,8 +7,8 @@ export default class Line {
         this.gameHeight = game.gameHeight;
         this.game = game;
         this.position = {
-            x: 50,
-            y: 50
+            x: 200,
+            y: 500
         }
         this.maxSpeed = {
             x: 1,
@@ -50,13 +50,13 @@ export default class Line {
         this.speed.y = 0;
     }
 
-    clear(context) {
-        let screen = this.game.screen;
-        context.clear(screen.position.x, screen.position.y, screen.width, screen.height);
+    clear() {
+        this.drawX = [];
+        this.drawY = [];
     }
 
     draw(context) {
-        context.strokeStyle = 'black';
+        context.strokeStyle = 'rgba(46, 49, 49, 1)';
         context.lineWidth = this.size;
         for (let i=0; i < this.drawX.length; i++) {
             context.beginPath();

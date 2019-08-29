@@ -11,13 +11,15 @@ let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 game.start();
 game.drawStatic(context);
 
+document.addEventListener("dblclick", event => {
+    game.resetScreen(context);
+});
+
 let lastTime = 0;
 
 function gameLoop(timeStamp) {
     let deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
-
-    // context.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
     game.update(deltaTime);
     game.draw(context);

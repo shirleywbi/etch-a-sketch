@@ -55,7 +55,6 @@ export default class Knob {
         context.fillStyle = 'white';
         context.fill();
         context.closePath();
-
     }
 
     update(deltaTime) {}
