@@ -5,10 +5,20 @@ import Arrow from "./arrow.js";
 import Screen from "./screen.js";
 
 export default class Game {
-    
+
     constructor(gameWidth, gameHeight) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
+    }
+
+    // EFFECTS: checks whether .mp3 can be played, if not, returns .ogg
+    soundType() {
+        let audio = new Audio();
+        if (audio.canPlayType("audio/mp3")) {
+            return ".mp3";
+        } else {
+            return ".ogg";
+        }
     }
 
     start() {
@@ -46,6 +56,8 @@ export default class Game {
         context.clearRect(this.screen.position.x, this.screen.position.y, this.screen.width, this.screen.height);
         this.line.clear();
         this.screen.draw(context);
+        let shaking = document.getElementById('shake');
+        shaking.play();
     }
 
     drawStatic(context) {
@@ -56,3 +68,4 @@ export default class Game {
         this.gameObjects.forEach((object) => object.draw(context));    
     }
 }
+
