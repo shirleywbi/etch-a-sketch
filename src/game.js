@@ -1,6 +1,7 @@
 import Knob from "./knob.js";
 import InputHandler from "./input.js";
 import Ball from "./ball.js";
+import Arrow from "./arrow.js";
 
 export default class Game {
     
@@ -13,6 +14,17 @@ export default class Game {
         this.lknob = new Knob(this, 'left');
         this.rknob = new Knob(this, 'right');
         this.ball = new Ball(this);
+        this.arrowLeft = new Arrow(this, 'left');
+        this.arrowRight = new Arrow(this, 'right');
+        this.arrowUp = new Arrow(this, 'up');
+        this.arrowDown = new Arrow(this, 'down');
+
+        this.staticObjects = [
+            this.arrowLeft,
+            this.arrowRight,
+            this.arrowUp,
+            this.arrowDown
+        ];
 
         this.gameObjects = [
             this.ball,
@@ -29,5 +41,6 @@ export default class Game {
 
     draw(context) {
         this.gameObjects.forEach((object) => object.draw(context));    
+        this.staticObjects.forEach((object) => object.draw(context));
     }
 }
