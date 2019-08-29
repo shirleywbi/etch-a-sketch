@@ -1,27 +1,27 @@
 export default class InputHandler {
 
-    constructor(knob1, knob2) {
+    constructor(line) {
         document.addEventListener("keydown", event => {
             switch(event.key) {
                 // Move left
                 case 'z':
                 case 'KeyZ':
-                    knob1.rotateLeft();
+                    line.moveLeft();
                     break;
                 // Move right
                 case 'x':
                 case 'KeyX':
-                    knob1.rotateRight();
+                    line.moveRight();
                     break;
                 // Move up
                 case '.':
                 case 'Period':
-                    knob2.rotateLeft();
+                    line.moveUp();
                     break;
                 // Move down
                 case '/':
                 case 'Slash':
-                    knob2.rotateRight();
+                    line.moveDown();
                     break;
             }
         });
@@ -30,23 +30,23 @@ export default class InputHandler {
             switch(event.key) {
                 case 'z':
                 case 'KeyZ':
-                    if (knob1.speed < 0)
-                        knob1.stop();
+                    if (line.speed < 0)
+                        line.stop();
                     break;
                 case 'x':
                 case 'KeyX':
-                    if (knob1.speed > 0)
-                        knob1.stop();
+                    if (line.speed > 0)
+                        line.stop();
                     break;
                 case '.':
                 case 'Period':
-                    if (knob2.speed < 0)
-                        knob2.stop();
+                    if (line.speed < 0)
+                        line.stop();
                     break;
                 case '/':
                 case 'Slash':
-                    if (knob2.speed > 0)
-                        knob2.stop();
+                    if (line.speed > 0)
+                        line.stop();
                     break;
             }
         });

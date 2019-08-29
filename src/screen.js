@@ -21,6 +21,7 @@ export default class Screen {
         // Fill in block
         context.strokeRect(this.position.x+(cornerRadius/2), this.position.y+(cornerRadius/2), this.width-cornerRadius, this.height-cornerRadius);
         context.fillRect(this.position.x+(cornerRadius/2), this.position.y+(cornerRadius/2), this.width-cornerRadius, this.height-cornerRadius);
+        
     }
 
     update(deltaTime) {}

@@ -35,7 +35,7 @@ export default class Game {
             this.ball
         ];
 
-        new InputHandler(this.lknob, this.rknob);
+        new InputHandler(this.ball);
     }
 
     update(deltaTime) {

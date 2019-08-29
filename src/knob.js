@@ -16,15 +16,6 @@ export default class Knob {
                 y: verticalHeight
             };
         }
-        console.log(this.position);
-    }
-
-    rotateLeft() {
-        this.angle = -this.deltaAngle;
-    }
-
-    rotateRight() {
-        this.angle = this.deltaAngle;
     }
 
     stop() {
@@ -39,7 +30,6 @@ export default class Knob {
         context.fillStyle = 'white';
         
         context.fill();
-        context.stroke();
     }
 
     update(deltaTime) {}
