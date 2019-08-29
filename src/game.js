@@ -11,16 +11,6 @@ export default class Game {
         this.gameHeight = gameHeight;
     }
 
-    // EFFECTS: checks whether .mp3 can be played, if not, returns .ogg
-    soundType() {
-        let audio = new Audio();
-        if (audio.canPlayType("audio/mp3")) {
-            return ".mp3";
-        } else {
-            return ".ogg";
-        }
-    }
-
     start() {
         this.lknob = new Knob(this, 'left');
         this.rknob = new Knob(this, 'right');

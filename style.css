@@ -4,6 +4,33 @@
     box-shadow: 2px 2px 12px 0px grey;
 }
 
-img {
-    display: none;
+table {
+    /* border: 4px solid black; */
+    border-radius: 10px;
+    padding: 5px;
 }
+
+#instructions {
+    position: absolute;
+    top: 430px;
+    left: 292px; /*(800 w + 8 mrgn)/2 - (224 instr-w)/2 */
+}
+
+.instruction-img {
+    text-align: center;
+}
+
+.instruction-text {
+    text-transform: uppercase;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    padding-left: 13px;
+}
+
+*.no-select {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+ }
