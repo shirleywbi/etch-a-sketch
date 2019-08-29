@@ -26,26 +26,23 @@ export default class InputHandler {
             }
         });
 
+        // TODO: Does not take into consideration if you still have that particular key down
         document.addEventListener("keyup", event => {
             switch(event.key) {
                 case 'z':
                 case 'KeyZ':
-                    if (line.speed < 0)
                         line.stop();
                     break;
                 case 'x':
                 case 'KeyX':
-                    if (line.speed > 0)
                         line.stop();
                     break;
                 case '.':
                 case 'Period':
-                    if (line.speed < 0)
                         line.stop();
                     break;
                 case '/':
                 case 'Slash':
-                    if (line.speed > 0)
                         line.stop();
                     break;
             }
