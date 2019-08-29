@@ -10,8 +10,8 @@ export default class Arrow {
         switch (dir) {
             case 'left':
                 this.position = {
-                    x: this.game.lknob.position.x + this.game.lknob.size/2 - (2 * this.size + this.space)/2, 
-                    y: this.game.lknob.position.y - this.size - 10
+                    x: this.game.lknob.position.x - (2 * this.size + this.space)/2, 
+                    y: this.game.lknob.position.y - this.game.lknob.size/2 - this.size - 10
                 };
                 break;
             case 'right':
@@ -22,8 +22,8 @@ export default class Arrow {
                 break;
             case 'up':
                 this.position = {
-                    x: this.game.rknob.position.x + this.game.rknob.size/2 - this.size/2, 
-                    y: this.game.rknob.position.y - this.size * 2 - this.space - 10
+                    x: this.game.rknob.position.x - this.size/2, 
+                    y: this.game.rknob.position.y - this.game.rknob.size/2 - this.size * 2 - this.space - 10
                 };
                 break;
             case 'down':  

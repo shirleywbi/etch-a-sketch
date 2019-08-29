@@ -1,26 +1,22 @@
-import {parseRadians} from './utils/utils';
-
 export default class Knob {
 
     constructor(game, position) {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
-        this.image = document.getElementById('img_knob');
         this.size = 80;
-        this.angle = parseRadians(0);
-        this.deltaAngle = parseRadians(5);
-        this.direction = parseRadians(0);
+        let verticalHeight = this.gameHeight - this.size;
         if (position === 'left') {
             this.position = { 
-                x: this.size * 1/2, 
-                y: this.gameHeight - this.size * 3/2
+                x: this.size, 
+                y: verticalHeight
             };
         } else {
             this.position = {
-                x: this.gameWidth - this.size * 3/2, 
-                y: this.gameHeight - this.size * 3/2
+                x: this.gameWidth - this.size, 
+                y: verticalHeight
             };
         }
+        console.log(this.position);
     }
 
     rotateLeft() {
@@ -36,13 +32,17 @@ export default class Knob {
     }
 
     draw(context) {
-        // this.image.rotate(this.direction);
-        context.drawImage(this.image, this.position.x, this.position.y, this.size, this.size);
+        context.lineWidth = 1;
+        context.beginPath();
+        
+        context.arc(this.position.x, this.position.y, this.size/2, 0, 2 * Math.PI);
+        context.fillStyle = 'white';
+        
+        context.fill();
+        context.stroke();
     }
 
-    update(deltaTime) {
-        this.direction += this.angle;
-    }
+    update(deltaTime) {}
 
     
 }
