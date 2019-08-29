@@ -1,7 +1,8 @@
+// Reference: http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/
+
 export default class Line {
 
     constructor(game) {
-        this.image = document.getElementById('img_ball');
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.game = game;
@@ -10,14 +11,22 @@ export default class Line {
             y: 50
         }
         this.maxSpeed = {
-            x: 5,
-            y: 5
+            x: 1,
+            y: 1
         }
         this.speed = {
             x: 0,
             y: 0
         };
-        this.size = 50;
+        this.size = 1;
+        this.drawX = new Array();
+        this.drawY = new Array();
+    }
+
+    // EFFECTS: adds screen position to drawX, drawY
+    addScreenPos() {
+        this.drawX.push(this.position.x);
+        this.drawY.push(this.position.y);
     }
 
     moveLeft() {
@@ -47,7 +56,16 @@ export default class Line {
     }
 
     draw(context) {
-        context.drawImage(this.image, this.position.x, this.position.y, this.size, this.size);
+        context.strokeStyle = 'black';
+        context.lineWidth = this.size;
+        for (let i=0; i < this.drawX.length; i++) {
+            context.beginPath();
+            context.moveTo(this.drawX[i-1], this.drawY[i-1]);
+            context.lineTo(this.drawX[i], this.drawY[i]);
+            context.closePath();
+            context.stroke();
+        }
+        this.addScreenPos();
     }
 
     update(deltaTime) {
@@ -65,7 +83,7 @@ export default class Line {
         }
 
         // wall on top or bottom
-        if (this.position.y < screen.position.y) {
+        if (this.position.y - this.size < screen.position.y) {
             this.position.y = screen.position.y;
         } else if (this.position.y + this.size > screen.position.y + screen.height) {
             this.position.y = screen.position.y + screen.height - this.size;
