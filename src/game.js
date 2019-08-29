@@ -22,6 +22,8 @@ export default class Game {
         this.screen = new Screen(this);
 
         this.staticObjects = [
+            this.lknob,
+            this.rknob,
             this.arrowLeft,
             this.arrowRight,
             this.arrowUp,
@@ -30,8 +32,6 @@ export default class Game {
         ];
 
         this.gameObjects = [
-            this.lknob,
-            this.rknob,
             this.line
         ];
 
@@ -42,8 +42,11 @@ export default class Game {
         this.gameObjects.forEach((object) => object.update(deltaTime));
     }
 
-    draw(context) {
+    drawStatic(context) {
         this.staticObjects.forEach((object) => object.draw(context));
+    }
+
+    draw(context) {
         this.gameObjects.forEach((object) => object.draw(context));    
     }
 }

@@ -3,10 +3,10 @@ export default class Screen {
         this.game = game;
         this.position = {
             x: this.game.lknob.position.x/2, 
-            y: this.game.lknob.size/2
+            y: this.game.lknob.diameter/2
         }
-        this.width = game.gameWidth - game.rknob.size;
-        this.height = game.arrowUp.position.y - game.rknob.size * 0.5 - 20;
+        this.width = game.gameWidth - game.rknob.diameter;
+        this.height = game.arrowUp.position.y - game.rknob.diameter * 0.5 - 20;
     }
 
     draw(context) {
