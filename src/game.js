@@ -1,17 +1,14 @@
-import Knob from "./knob.js";
-import InputHandler from "./input.js";
-import Line from "./line.js";
-import Arrow from "./arrow.js";
-import Screen from "./screen.js";
+// require ../src/knob.js;
+// require ../src/input.js;
+// require ../src/line.js;
+// require ../src/arrow.js;
+// require ../src/screen.js;
 
-export default class Game {
+function Game(gameWidth, gameHeight) {
+    this.gameWidth = gameWidth;
+    this.gameHeight = gameHeight;
 
-    constructor(gameWidth, gameHeight) {
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
-    }
-
-    start() {
+    this.start = function() {
         this.lknob = new Knob(this, 'left');
         this.rknob = new Knob(this, 'right');
         this.line = new Line(this);
@@ -38,11 +35,11 @@ export default class Game {
         new InputHandler(this.line);
     }
 
-    update(deltaTime) {
+    this.update = function(deltaTime) {
         this.gameObjects.forEach((object) => object.update(deltaTime));
     }
 
-    resetScreen(context) {
+    this.resetScreen = function(context) {
         context.clearRect(this.screen.position.x, this.screen.position.y, this.screen.width, this.screen.height);
         this.line.clear();
         this.screen.draw(context);
@@ -50,11 +47,11 @@ export default class Game {
         shaking.play();
     }
 
-    drawStatic(context) {
+    this.drawStatic = function(context) {
         this.staticObjects.forEach((object) => object.draw(context));
     }
 
-    draw(context) {
+    this.draw = function(context) {
         this.gameObjects.forEach((object) => object.draw(context));    
     }
 }

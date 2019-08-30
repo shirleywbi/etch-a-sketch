@@ -1,61 +1,58 @@
 // Reference: http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/
 
-export default class Line {
-
-    constructor(game) {
-        this.gameWidth = game.gameWidth;
-        this.gameHeight = game.gameHeight;
-        this.game = game;
-        this.position = {
-            x: 200,
-            y: 500
-        }
-        this.maxSpeed = {
-            x: 1,
-            y: 1
-        }
-        this.speed = {
-            x: 0,
-            y: 0
-        };
-        this.size = 1;
-        this.drawX = new Array();
-        this.drawY = new Array();
+function Line(game) {
+    this.gameWidth = game.gameWidth;
+    this.gameHeight = game.gameHeight;
+    this.game = game;
+    this.position = {
+        x: 200,
+        y: 500
     }
+    this.maxSpeed = {
+        x: 1,
+        y: 1
+    }
+    this.speed = {
+        x: 0,
+        y: 0
+    };
+    this.size = 1;
+    this.drawX = new Array();
+    this.drawY = new Array();
 
     // EFFECTS: adds screen position to drawX, drawY
-    addScreenPos() {
+    this.addScreenPos = function() {
         this.drawX.push(this.position.x);
         this.drawY.push(this.position.y);
     }
 
-    moveLeft() {
+    this.moveLeft = function() {
         this.speed.x = -this.maxSpeed.x;
     }
 
-    moveRight() {
+    this.moveRight = function() {
         this.speed.x = this.maxSpeed.x;
     }
 
-    moveUp() {
+    this.moveUp = function() {
         this.speed.y = -this.maxSpeed.y;
     }
 
-    moveDown() {
+    this.moveDown = function() {
         this.speed.y = this.maxSpeed.y;
     }
 
-    stop() {
+    this.stop = function() {
         this.speed.x = 0;
         this.speed.y = 0;
     }
 
-    clear() {
+    this.clear = function() {
         this.drawX = [];
         this.drawY = [];
     }
 
-    draw(context) {
+    this.draw = function(context) {
         context.strokeStyle = 'rgba(46, 49, 49, 1)';
         context.lineWidth = this.size;
         for (let i=0; i < this.drawX.length; i++) {
@@ -68,7 +65,7 @@ export default class Line {
         this.addScreenPos();
     }
 
-    update(deltaTime) {
+    this.update = function(deltaTime) {
         this.position.x += this.speed.x;
         this.position.y += this.speed.y;
         

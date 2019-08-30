@@ -1,4 +1,4 @@
-import Game from "./game.js";
+// require ./game.js;
 
 let canvas = document.getElementById("gameScreen");
 
