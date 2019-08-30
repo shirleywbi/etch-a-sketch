@@ -1,15 +1,13 @@
-export default class Screen {
-    constructor(game) {
-        this.game = game;
-        this.position = {
-            x: this.game.lknob.position.x/2, 
-            y: this.game.lknob.diameter/2
-        }
-        this.width = game.gameWidth - game.rknob.diameter;
-        this.height = game.arrowUp.position.y - game.rknob.diameter * 0.5 - 20;
+function Screen(game) {
+    this.game = game;
+    this.position = {
+        x: this.game.lknob.position.x/2, 
+        y: this.game.lknob.diameter/2
     }
+    this.width = game.gameWidth - game.rknob.diameter;
+    this.height = game.arrowUp.position.y - game.rknob.diameter * 0.5 - 20;
 
-    draw(context) {
+    this.draw = function(context) {
         context.fillStyle = 'lightgray';
         context.strokeStyle = 'lightgray';
         
@@ -23,6 +21,4 @@ export default class Screen {
         context.fillRect(this.position.x+(cornerRadius/2), this.position.y+(cornerRadius/2), this.width-cornerRadius, this.height-cornerRadius);  
 
     }
-
-    update(deltaTime) {}
 }

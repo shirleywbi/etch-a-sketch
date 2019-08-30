@@ -1,28 +1,25 @@
-export default class Knob {
-
-    constructor(game, position) {
-        this.gameWidth = game.gameWidth;
-        this.gameHeight = game.gameHeight;
-        this.diameter = 80;
-        let verticalHeight = this.gameHeight - this.diameter;
-        if (position === 'left') {
-            this.position = { 
-                x: this.diameter, 
-                y: verticalHeight
-            };
-        } else {
-            this.position = {
-                x: this.gameWidth - this.diameter, 
-                y: verticalHeight
-            };
-        }
+function Knob(game, position) {
+    this.gameWidth = game.gameWidth;
+    this.gameHeight = game.gameHeight;
+    this.diameter = 80;
+    let verticalHeight = this.gameHeight - this.diameter;
+    if (position === 'left') {
+        this.position = { 
+            x: this.diameter, 
+            y: verticalHeight
+        };
+    } else {
+        this.position = {
+            x: this.gameWidth - this.diameter, 
+            y: verticalHeight
+        };
     }
 
-    stop() {
+    this.stop = function() {
         this.angle = 0;
     }
 
-    draw(context) {
+    this.draw = function(context) {
         context.lineWidth = 1;
 
         // Draw Big Circle
@@ -56,8 +53,5 @@ export default class Knob {
         context.fill();
         context.closePath();
     }
-
-    update(deltaTime) {}
-
-    
+   
 }
