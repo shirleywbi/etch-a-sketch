@@ -7,7 +7,7 @@ Controls:
 - Clear Drawing: Double-click
 
 
-###References: 
+### References: 
 #### Intro to Game Development with JavaScript - Full Tutorial
 ###### For general game setup
 https://www.youtube.com/watch?v=3EMxBkqC4z0
