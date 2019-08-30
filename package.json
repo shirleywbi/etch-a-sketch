@@ -1,5 +1,8 @@
 {
     "name": "etch-a-sketch",
     "version": "1.0.0",
-    "description": "Etch A Sketch"
+    "description": "Etch A Sketch",
+    "dependencies": {},
+    "repository": "github:shirleywbi/etch-a-sketch",
+    "license": "MIT"
 }
